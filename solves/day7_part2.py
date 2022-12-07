@@ -3,7 +3,6 @@ inp = open('inputs/day7.txt', 'r').read()
 val = {}
 
 path = ['home']
-g = {}
 
 for line in inp.split('\n'):
 	splitted = line.split(' ')
@@ -16,10 +15,7 @@ for line in inp.split('\n'):
 			else:
 				path.append(splitted[2])
 	else:
-		if splitted[0] == 'dir':
-			g[path[-1]] = g.get(path[-1]) or []
-			g[path[-1]].append(splitted[1])
-		else:
+		if splitted[0] != 'dir':
 			for i in range(len(path)):
 				val[",".join(path[:i + 1])] = (val.get(",".join(path[:i + 1])) or 0) + int(splitted[0])
 
